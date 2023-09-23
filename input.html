@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Input Expense</title>
+    <link rel="stylesheet" type="text/css" href="input.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Add an Expense</h1><br>
+        <form method="POST" action="{{ url_for('input_expense') }}">
+            <label>Date: <input type="text" name="date" class="input" placeholder="YYYY-MM-DD" pattern="\d{4}-\{2}-\{2}" required></label><br><br>
+            <label>Category: <input type="text" name="category" class="input" required></label><br><br>
+            <label>Amount: <input type="number" step="10" name="amount" class="input" required></label><br><br>
+            <input type="submit" value="Submit" class="submit-btn">
+        </form>
+        <p><a href="{{ url_for('home') }}">Back to Home</a></p>
+    </div>
+</body>
+</html>

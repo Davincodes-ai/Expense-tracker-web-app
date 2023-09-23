@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense Summary</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Expense Summary</h1>
+        <p>Total Expenses: #{{ total }}</p>
+        <p>Average Expenses per Day: #{{ avg_per_day|round(2) }}</p>
+        <p>Average Expenses per Transaction: #{{ avg_per_transaction|round(2) }}</p>
+        
+        <!-- Display the pie chart -->
+        <img src="data:image/png;base64,{{ image_base64 }}" alt="Category Distribution" >
+        
+
+        <!-- Display the line chart -->
+        <img src="data:image/png;base64,{{ img_b64 }}" alt="Spending Trends Over Time">
+
+        
+        <h2>Monthly Summaries</h2>
+        <table>
+            <tr>
+                <th>Month</th>
+                <th>Total Expenses</th>
+            </tr>
+            {% for month, total in monthly_summary.items() %}
+            <tr>
+                <td>{{ month }}</td>
+                <td>${{ total }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <p><a href="{{ url_for('input_expense') }}">Add Another Expense</a></p>
+        <p><a href="{{url_for('upload')}}"></a></p>
+        <p><a href="{{ url_for('home') }}">Back to Home</a></p>
+    </div>
+</body>
+</html>
+      
